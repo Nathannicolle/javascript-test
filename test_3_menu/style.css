@@ -1,0 +1,105 @@
+body {
+    background-color: #b7094c;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: right;
+    width: 90%;
+    font-size: 1.8em;
+}
+
+#chkbox_menu {
+    visibility: hidden;
+}
+
+ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    cursor: pointer;
+}
+
+.show-menu-btn {
+    margin-right: 2%;
+    font-size: 1.8em;
+}
+
+.show-menu-btn:hover {
+    cursor: pointer;
+}
+
+.fullscreen_menu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 10;
+    color: gray;
+    text-align: center;
+    transform: translateY(-100%);
+    top: 0;
+    transition: 0.5s ease-in-out;
+}
+
+.fullscreen_menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: left;
+    font-size: 2.2em;
+}
+
+.fullscreen_menu ul li {
+    margin-right: 10%;
+}
+
+.fullscreen_menu ul li:last-child {
+    margin-right: 0;
+}
+
+.fullscreen_menu ul li a {
+    color: transparent;
+    -webkit-text-stroke: 1px gray;
+    transition: 0.5s;
+}
+
+.fullscreen_menu ul li a:hover {
+    color: gray;
+}
+
+.hide-menu-btn {
+    font-size: 1.8em;
+}
+
+.hide-menu-btn:hover {
+    cursor: pointer;
+}
+
+.fullscreen_menu .close:hover {
+    cursor: pointer;
+}
+
+#chkbox_menu:checked ~ .fullscreen_menu {
+    transform: translateY(0%);
+}
