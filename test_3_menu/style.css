@@ -87,14 +87,12 @@ ul li a:hover {
     margin-bottom: 2%;
     font-size: 2.4em;
     font-weight: bold;
-    grid-template-columns: repeat(5, 20%);
+    grid-template-columns: repeat(2, 20%);
     grid-template-rows: repeat(2, auto);
     grid-row-gap: 1%;
     grid-column-gap: 1%;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
+    justify-content: left;
 }
 
 .fullscreen_menu .menu a {
@@ -118,9 +116,9 @@ ul li a:hover {
 }
 
 .fullscreen_menu .menu img:hover {
-    cursor: pointer;
-    opacity: 1;
-    transform: scale(1.2);
+    cursor: pointer !important;
+    opacity: 1 !important;
+    transform: scale(1.2) !important;
 }
 
 .fullscreen_menu .menu a:last-child {
@@ -128,7 +126,7 @@ ul li a:hover {
 }
 
 .fullscreen_menu .menu a:hover {
-    color: white;
+    color: white !important;
 }
 
 .fullscreen_menu .other_links {
