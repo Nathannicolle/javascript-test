@@ -18,4 +18,6 @@ window.addEventListener("load", () => {
       fillOpacity: 0.5,
       radius: 5000
    }).addTo(map);
+
+   circle.bindPopup("Voici mon rayon d'action !");
 });
