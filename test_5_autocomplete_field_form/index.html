@@ -3,13 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Test d'intégration d'autocomplétion dans un formulaire</title>
+    <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=api_key&libraries=places&callback=initAutocomplete">
+    </script>
+    <script defer>
+        let autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'),
+                {
+                    types:['establishment'],
+                    componentRestrictions: {'country': ['FR']},
+                    fields: ['place_id', 'geometry', 'name']
+                }
+            )
+
+            autocomplete.addListener('place_changed', () => {
+                let place = autocomplete.getPlace();
+
+                if(!place.geomety) {
+                    document.getElementById('autocomplete').placeholder = "Entrez une adresse";
+                } else {
+                    document.getElementById('autocomplete').innerHTML = place.name;
+                }
+            });
+        }
+    </script>
+
 </head>
 <body>
     <h1>Test d'intégration d'autocomplétion dans un formulaire</h1>
     <form method="post" action="send.php">
         <input type="text" placeholder="Votre prénom" id="firstname" name="firstname" required/>
         <input type="text" placeholder="Votre nom" id="lastname" name="lastname" required/>
-        <input type="text" placeholder="Votre adresse" id="address" name="address" required/>
+        <input type="text" placeholder="Votre adresse" name="address" id="autocomplete" required/>
         <button>Envoyer</button>
     </form>
 </body>
