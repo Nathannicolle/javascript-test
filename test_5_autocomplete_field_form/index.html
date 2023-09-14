@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Test d'intégration d'autocomplétion dans un formulaire</title>
-    <script defer></script>
+    <script defer src="https://unpkg.com/@geoapify/geocoder-autocomplete@^1/dist/index.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@geoapify/geocoder-autocomplete@^1/styles/minimal.css">
+    <style>
+        .autocomplete-container {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .map-container {
+            margin-top: 5px;
+            height: 250px;
+        }
+
+        .message-row {
+            margin: 10px 0;
+        }
+
+        .message-row.warning {
+            color: #f28e00;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Test d'intégration d'autocomplétion dans un formulaire</h1>
     <form method="post" action="send.php">
         <input type="text" placeholder="Votre prénom" id="firstname" name="firstname" required/>
         <input type="text" placeholder="Votre nom" id="lastname" name="lastname" required/>
-        <input type="text" placeholder="Votre adresse" name="address" id="autocomplete" required/>
+        <div id="autocomplete" class="autocomplete-container"></div>
+        <div id="messages" class="messages-container">
+            <div id="info" class="message-row">Please enter your address in the input field below or click on the map to get the address.</div>
+            <div id="warning-info" class="message-row warning hidden">The house number or street is missing. Drag the marker to the correct location to clarify.</div>
+            <div id="accept-location" class="message-row hidden">Would you like to accept the address's new location? <button onclick="acceptLocation()">Yes</button></div>
+            <div id="accept-address"  class="message-row hidden">You are located at the following address: <span id="new-address"></span> <br/> Do you want to accept this address? <button onclick="acceptAddress()">Yes</button></div>
+        </div>
         <button>Envoyer</button>
     </form>
 </body>
